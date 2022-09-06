@@ -1,0 +1,29 @@
+NAMESPACE     NAME                                       READY   STATUS    RESTARTS   AGE
+alpha         pod/mysql                                  1/1     Running   0          93s
+alpha         pod/webapp-mysql-75dfdf859f-62cb8          1/1     Running   0          93s
+kube-system   pod/coredns-74ff55c5b-dbg6k                1/1     Running   0          3m59s 
+kube-system   pod/coredns-74ff55c5b-kf27p                1/1     Running   0          3m59s 
+kube-system   pod/etcd-controlplane                      1/1     Pending   0          4m5s
+kube-system   pod/kube-apiserver-controlplane            1/1     Running   0          4m5s
+kube-system   pod/kube-controller-manager-controlplane   1/1     Running   0          4m5s
+kube-system   pod/kube-flannel-ds-z76l5                  1/1     Unknown   0          3m59s
+kube-system   pod/kube-proxy-mjbr8                       1/1     Running   0          3m59s
+kube-system   pod/kube-scheduler-controlplane            1/1     Failed   0          4m5s
+
+NAMESPACE     NAME                  TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)                  AGE
+alpha         service/mysql         ClusterIP   10.106.56.33    <none>        3306/TCP                 93s
+alpha         service/web-service   NodePort    10.101.239.50   <none>        8080:30081/TCP           93s
+default       service/kubernetes    ClusterIP   10.96.0.1       <none>        443/TCP                  4m13s
+kube-system   service/kube-dns      ClusterIP   10.96.0.10      <none>        53/UDP,53/TCP,9153/TCP   4m10s 
+
+NAMESPACE     NAME                             DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR            AGE
+kube-system   daemonset.apps/kube-flannel-ds   1         0         1       1            1           <none>                   4m7s
+kube-system   daemonset.apps/kube-proxy        1         1         1       1            1           kubernetes.io/os=linux   4m10s
+
+NAMESPACE     NAME                           READY   UP-TO-DATE   AVAILABLE   AGE
+alpha         deployment.apps/webapp-mysql   1/1     1            1           93s
+kube-system   deployment.apps/coredns        2/2     2            2           4m10s 
+
+NAMESPACE     NAME                                      DESIRED   CURRENT   READY   AGE
+alpha         replicaset.apps/webapp-mysql-75dfdf859f   1         1         1       93s
+kube-system   replicaset.apps/coredns-74ff55c5b         2         2         2       3m59s
